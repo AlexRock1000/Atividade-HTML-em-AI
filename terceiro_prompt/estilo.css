@@ -1,0 +1,258 @@
+:root {
+  --fundo: #f4f7fb;
+  --texto: #1d2939;
+  --secao: #ffffff;
+  --principal: #2b6cb0;
+  --principal-claro: #bee3f8;
+  --borda: #cbd5e0;
+}
+
+/* POR QUE: arquivo CSS separado para manter conteúdo (HTML) e apresentação separados.
+  `:root` define variáveis de cores usadas por todo o arquivo: facilita alterar tema
+  sem procurar valores hex por todo o CSS. */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--texto);
+  background-color: var(--fundo);
+}
+
+/* POR QUE: `body` normaliza espaçamento e define fonte padrão e cores base da página.
+   `margin:0` remove o espaçamento padrão do navegador para controle total do layout. */
+
+.topo {
+  /* POR QUE: container do cabeçalho. `display:flex` permite reorganizar facilmente
+     os filhos (marca e navegação). `flex-direction:column` privilegia empilhamento no mobile. */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--secao);
+  border-bottom: 1px solid var(--borda);
+}
+
+.marca h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* POR QUE: `.marca h1` controla o tamanho do título principal e remove margem
+   para que a posição fique previsível dentro do cabeçalho. */
+
+.marca p {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* POR QUE: parágrafo de descrição logo abaixo do título; margem superior pequena
+   separa visualmente sem criar grande espaço. */
+
+.menu {
+  /* POR QUE: `nav` é um flex row para colocar links na mesma linha. `gap` cria espaço consistente
+     entre links sem usar margin em cada item. */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.menu a {
+  color: var(--principal);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* POR QUE: links do menu recebem cor de destaque e peso de fonte para visibilidade;
+   `text-decoration:none` remove sublinhado padrão. */
+
+.apresentacao {
+  /* POR QUE: bloco principal de destaque que combina conteúdo e chamada à ação.
+     Usa `flex` em coluna no mobile para empilhar elementos e manter leitura linear. */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.categoria {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--principal);
+}
+
+/* POR QUE: `.categoria` é um rótulo curto (metadata) que destaca o público-alvo;
+   cor e peso ajudam a identificar o contexto rapidamente. */
+
+.apresentacao h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* POR QUE: título de destaque com tamanho maior para hierarquia visual. */
+
+.apresentacao p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* POR QUE: corpo do texto com espaçamento entre linhas confortável para leitura. */
+
+.acao-principal {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* POR QUE: contêiner do botão principal; `flex` facilita alinhamento do botão. */
+
+.botao-principal,
+.botao-secundario {
+  display: inline-block;
+  padding: 0.9rem 1.3rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* POR QUE: estilos compartilhados para botões: padding para área de clique,
+   borda arredondada para aparência moderna, `inline-block` mantém comportamento de link. */
+
+.botao-principal {
+  background-color: var(--principal);
+  color: #ffffff;
+}
+
+/* POR QUE: botão principal usa cor de destaque e texto claro para contraste e chamar atenção. */
+
+.lista-vagas {
+  padding: 1.5rem;
+}
+
+/* POR QUE: separa visualmente a lista de vagas do restante do conteúdo com padding uniforme. */
+
+.secao-cabecalho h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+/* POR QUE: cabeçalho de seção com margem inferior pequena para espaçamento entre título e descrição. */
+
+.secao-cabecalho p {
+  margin: 0;
+  color: #475569;
+}
+
+/* POR QUE: texto de apoio da seção usa cor secundária para hierarquia e leitura tranquila. */
+
+.cards {
+  /* POR QUE: lista de cards é um grid para permitir fácil troca entre 1 ou mais colunas;
+     `gap` controla espaçamento entre cards sem margens individuais. */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.vaga-card {
+  /* POR QUE: card visualmente separado por fundo e borda; padding aumenta área clicável
+     e `flex` interno organiza título, detalhes e ações em coluna. */
+  padding: 1.2rem;
+  background-color: var(--secao);
+  border: 1px solid var(--borda);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tipo-vaga {
+  margin: 0;
+  color: var(--principal);
+  font-weight: 700;
+}
+
+/* POR QUE: rótulo curto informando tipo de vaga; cor e peso ajudam o usuário a escanear rapidamente. */
+
+.vaga-card h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* POR QUE: título da vaga com destaque moderado para hierarquia dentro do card. */
+
+.vaga-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* POR QUE: parágrafos dentro do card têm espaçamento de linha consistente para legibilidade. */
+
+.detalhes {
+  color: #475569;
+}
+
+/* POR QUE: detalhes usam cor secundária para indicar informação de suporte ao título. */
+
+.botao-secundario {
+  width: fit-content;
+  background-color: var(--principal-claro);
+  color: var(--texto);
+}
+
+/* POR QUE: botão secundário com cor mais suave para ações de menor prioridade;
+   `width:fit-content` evita ocupar toda a largura do card. */
+
+.sobre {
+  padding: 1.5rem;
+}
+
+/* POR QUE: seção "sobre" recebe padding igual ao restante para manter consistência visual. */
+
+.sobre h3 {
+  margin: 0 0 1rem;
+}
+
+/* POR QUE: margem inferior maior para separar título das listas explicativas. */
+
+.sobre ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+/* POR QUE: lista sem margem superior para alinhamento, com `padding-left` para marcador visível. */
+
+.sobre li {
+  margin-bottom: 0.7rem;
+}
+
+/* POR QUE: espaçamento entre itens da lista para facilitar leitura sequencial. */
+
+.rodape {
+  padding: 1.5rem;
+  background-color: var(--secao);
+  border-top: 1px solid var(--borda);
+}
+
+/* POR QUE: rodapé separado visualmente, com padding e borda superior para delimitar a área final da página. */
+
+@media (min-width: 760px) {
+  /* POR QUE: media query aumenta a complexidade do layout apenas quando há espaço.
+     `.topo` vira linha para colocar marca e menu lado a lado; `.apresentacao` alinha texto e botão
+     lado a lado; `.cards` usa duas colunas para aproveitar largura disponível. */
+  .topo {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .apresentacao {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
