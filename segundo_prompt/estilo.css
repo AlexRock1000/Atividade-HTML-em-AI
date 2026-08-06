@@ -1,0 +1,88 @@
+:root {
+  --cor-primaria: #2b6cb0;
+  --cor-fundo: #8e8e8f;
+  --texto: #222222;
+  --muted: #363434;
+  --radius: 8px;
+  --fonte: "Arial", sans-serif;
+}
+
+body {
+  font-family: var(--fonte);
+  background-color: var(--cor-fundo);
+  color: var(--texto);
+  margin: 0;
+  padding: 0;
+}
+
+.cabecalho {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 20px;
+}
+.cabecalho h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.navegacao {
+  margin-top: 8px;
+}
+.navegacao .link {
+  color: white;
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+.conteudo-principal {
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.perfil-candidato h2,
+.busca-vagas h2,
+.candidaturas-recentes h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+.habilidades {
+  margin: 8px 0 16px 20px;
+}
+
+.form-busca label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+.form-busca input,
+.form-busca select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+}
+
+.botao-principal {
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+.botao-principal:hover {
+  background-color: #254f7a;
+}
+
+.rodape {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 16px;
+  margin-top: 20px;
+}

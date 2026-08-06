@@ -55,6 +55,9 @@ Atributos permitidos: `lang`, `charset`, `src`, `alt`, `href`, `type`, `id`, `fo
 3. **Apontar quando eu estiver errado**, em vez de só corrigir em silêncio.
 4. **Recusar o que está fora do escopo.** Se eu pedir algo proibido aqui,
    responder que está fora da etapa atual e explicar por quê, sem gerar o código.
+5. **Incluir comentários no código explicando cada função.** Todo código
+   gerado pela IA deve conter comentários que expliquem o propósito e o
+   funcionamento de cada função fornecida.
 
 ---
 
