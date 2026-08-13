@@ -9,6 +9,14 @@ addEventListener, leitura de campos e iterações simples).
 document.addEventListener("DOMContentLoaded", function() {
   // área de feedback: uso o parágrafo do cabeçalho da seção de vagas para mostrar mensagens
   var secaoCabecalhoP = document.querySelector('.secao-cabecalho p');
+  var modal = document.getElementById('modal-vaga');
+  var modalTitulo = document.getElementById('titulo-modal-vaga');
+  var modalLocalidade = document.querySelector('[data-modal="localidade"]');
+  var modalSalario = document.querySelector('[data-modal="salario"]');
+  var modalContrato = document.querySelector('[data-modal="contrato"]');
+  var modalRequisitos = document.querySelector('[data-modal="requisitos"]');
+  var modalDescricao = document.querySelector('[data-modal="descricao"]');
+  var botaoFecharModal = document.querySelector('.modal-fechar');
 
   function setStatus(text) {
     // POR QUE: mostrar uma mensagem clara ao candidato sobre o que a ação faria.
@@ -23,6 +31,39 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     console.log('SIMULAÇÃO:', text);
+  }
+
+  function abrirModalVaga(vaga) {
+    if (!modal || !modalTitulo || !modalLocalidade || !modalSalario || !modalContrato || !modalRequisitos || !modalDescricao) {
+      return;
+    }
+
+    var titulo = vaga.querySelector('h4') ? vaga.querySelector('h4').textContent.trim() : 'Vaga';
+    var localidade = vaga.dataset.localidade || 'Não informado';
+    var salario = vaga.dataset.salario || 'Não informado';
+    var contrato = vaga.dataset.contrato || 'Não informado';
+    var requisitos = vaga.dataset.requisitos || 'Não informado';
+    var descricao = vaga.dataset.descricao || 'Não informado';
+
+    modalTitulo.textContent = titulo;
+    modalLocalidade.textContent = localidade;
+    modalSalario.textContent = salario;
+    modalContrato.textContent = contrato;
+    modalRequisitos.textContent = requisitos;
+    modalDescricao.textContent = descricao;
+    modal.classList.add('ativo');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-aberto');
+  }
+
+  function fecharModalVaga() {
+    if (!modal) {
+      return;
+    }
+
+    modal.classList.remove('ativo');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-aberto');
   }
 
   // Botão principal: "Ver vagas"
@@ -43,16 +84,32 @@ document.addEventListener("DOMContentLoaded", function() {
       var btn = botoesSaiba[idx];
       btn.addEventListener('click', function(e) {
         e.preventDefault();
-        // POR QUE: exibir ao candidato um resumo da vaga sem navegar para outra página.
-        var article = btn.parentElement; // estrutura atual: <a> dentro de <article>
-        var tituloEl = article.querySelector('h4');
-        var detalhesEl = article.querySelector('.detalhes');
-        var titulo = tituloEl ? tituloEl.textContent : 'Vaga';
-        var detalhes = detalhesEl ? detalhesEl.textContent : 'Sem detalhes.';
-        setStatus('SIMULAÇÃO: ' + titulo + ' — ' + detalhes);
+        var article = btn.closest('.vaga-card');
+        if (article) {
+          abrirModalVaga(article);
+        }
       });
     })(i);
   }
+
+  // Fecha a modal ao clicar fora do conteúdo ou no botão de fechar
+  if (modal) {
+    modal.addEventListener('click', function(event) {
+      if (event.target && event.target.matches('[data-fechar-modal="true"]')) {
+        fecharModalVaga();
+      }
+    });
+  }
+
+  if (botaoFecharModal) {
+    botaoFecharModal.addEventListener('click', fecharModalVaga);
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && modal && modal.classList.contains('ativo')) {
+      fecharModalVaga();
+    }
+  });
 
   // Clique no card para marcar/remover interesse (simulação)
   var cards = document.querySelectorAll('.vaga-card');

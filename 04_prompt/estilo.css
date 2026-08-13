@@ -236,6 +236,100 @@ body {
 
 /* POR QUE: rodapé separado visualmente, com padding e borda superior para delimitar a área final da página. */
 
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.ativo {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.modal-conteudo {
+  position: relative;
+  z-index: 1;
+  width: min(90vw, 34rem);
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 1rem;
+  border: 1px solid var(--borda);
+  box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.24);
+  padding: 1.5rem;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: var(--principal-claro);
+  color: var(--texto);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+.modal-tipo {
+  margin: 0 0 0.5rem;
+  color: var(--principal);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+}
+
+.modal-conteudo h4 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+}
+
+.modal-detalhes {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.modal-detalhes li {
+  padding: 0.5rem 0.75rem;
+  background: #f8fafc;
+  border: 1px solid var(--borda);
+  border-radius: 0.5rem;
+}
+
+.modal-grupo {
+  margin-top: 1rem;
+}
+
+.modal-grupo h5 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.modal-grupo p {
+  margin: 0;
+  line-height: 1.5;
+  color: #334155;
+}
+
+body.modal-aberto {
+  overflow: hidden;
+}
+
 @media (min-width: 760px) {
   /* POR QUE: media query aumenta a complexidade do layout apenas quando há espaço.
      `.topo` vira linha para colocar marca e menu lado a lado; `.apresentacao` alinha texto e botão

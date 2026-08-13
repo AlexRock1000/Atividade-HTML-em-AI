@@ -49,7 +49,7 @@
 
       <div class="cards">
               <!-- POR QUE: link estilizado como botão conduz o usuário para a lista de vagas; mantenho `<a>` para preservar navegação e semântica. -->
-        <article class="vaga-card">
+        <article class="vaga-card" data-localidade="Remoto" data-salario="R$ 8.000 a R$ 12.000" data-contrato="CLT" data-requisitos="HTML, CSS, JavaScript, responsividade e UX." data-descricao="Desenvolvimento de interfaces modernas com foco em experiência do usuário e acessibilidade.">
           <p class="tipo-vaga">Tempo integral</p>
           <h4>Desenvolvedor Front-end</h4>
           <p>Empresa TechNova — Remoto</p>
@@ -57,7 +57,7 @@
           <a href="#" class="botao-secundario">Saiba mais</a>
         </article>
 
-        <article class="vaga-card">
+        <article class="vaga-card" data-localidade="São Paulo/SP (híbrido)" data-salario="R$ 5.500 a R$ 7.500" data-contrato="CLT" data-requisitos="Comunicação, triagem, organização e atendimento." data-descricao="Acompanhar candidatos, conduzir triagens e manter comunicação com as áreas de negócio e liderança.">
           <p class="tipo-vaga">Meio período</p>
                 <!-- POR QUE: `article` representa uma unidade independente de conteúdo (uma vaga).
                      Usei classes ao invés de estilos inline para manter a separação de responsabilidades. -->
@@ -71,6 +71,28 @@
                 <!-- DECISAO SUA: prefiro listar responsabilidades resumidas aqui. Quer que eu inclua salário e benefícios? -->
       </div>
     </section>
+
+    <div class="modal" id="modal-vaga" aria-hidden="true">
+      <div class="modal-overlay" data-fechar-modal="true"></div>
+      <div class="modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-vaga">
+        <button class="modal-fechar" type="button" aria-label="Fechar detalhes da vaga">×</button>
+        <p class="modal-tipo">Detalhes da vaga</p>
+        <h4 id="titulo-modal-vaga">Vaga</h4>
+        <ul class="modal-detalhes">
+          <li><strong>Localidade:</strong> <span data-modal="localidade">-</span></li>
+          <li><strong>Salário:</strong> <span data-modal="salario">-</span></li>
+          <li><strong>Contrato:</strong> <span data-modal="contrato">-</span></li>
+        </ul>
+        <div class="modal-grupo">
+          <h5>Requisitos</h5>
+          <p data-modal="requisitos">-</p>
+        </div>
+        <div class="modal-grupo">
+          <h5>Descrição</h5>
+          <p data-modal="descricao">-</p>
+        </div>
+      </div>
+    </div>
 
     <section id="sobre" class="sobre">
       <h3>Como funciona</h3>
@@ -88,7 +110,3 @@
   <script src="javaScript.js"></script>
 </body>
 </html>
-        <!-- POR QUE: footer contém informações institucionais e pontos de contato; usei id para permitir link direto da navegação. -->
-        <footer id="contato" class="rodape">
-          <p>Site de publicação de vagas para candidatos. Pronto para encontrar a sua próxima oportunidade?</p>
-        </footer>
