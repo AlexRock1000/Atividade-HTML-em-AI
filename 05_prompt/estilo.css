@@ -1,0 +1,337 @@
+/* POR QUE: variáveis CSS. Permite reutilizar cores e espaçamentos em todo o documento.
+   Nome descreve o PAPEL (--cor-principal) não a cor em si (--cor-azul). */
+:root {
+    --cor-principal: #007acc;
+    --cor-sucesso: #28a745;
+    --cor-perigo: #dc3545;
+    --cor-texto: #333;
+    --cor-fundo: #f5f5f5;
+    --cor-borda: #ddd;
+    --cor-fundo-claro: #f9f9f9;
+    --espaco-pequeno: 10px;
+    --espaco-medio: 20px;
+    --espaco-grande: 30px;
+}
+
+/* POR QUE: box-sizing: border-box faz padding não aumentar a largura dos elementos. Essencial para flexbox. */
+* {
+    box-sizing: border-box;
+}
+
+/* POR QUE: body recebe tipografia base, cor de texto e fundo para toda a página. */
+body {
+    font-family: Arial, sans-serif;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    margin: 0;
+    padding: var(--espaco-medio);
+}
+
+/* ============================================
+   CABEÇALHO
+   ============================================ */
+
+/* POR QUE: header ocupa largura inteira, fundo destacado e padding para respirar. */
+.cabecalho {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: var(--espaco-grande);
+    text-align: center;
+    margin-bottom: var(--espaco-grande);
+    border-radius: 8px;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.cabecalho p {
+    margin: var(--espaco-pequeno) 0 0 0;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL - MOBILE FIRST
+   ============================================ */
+
+/* POR QUE: flexbox em coluna no mobile. Media query muda para row em telas largas. */
+.conteudo-principal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-grande);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   SEÇÕES (formulário e lista)
+   ============================================ */
+
+.secao-formulario,
+.secao-lista {
+    background-color: white;
+    padding: var(--espaco-grande);
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+}
+
+.secao-formulario h2,
+.secao-lista h2 {
+    margin-top: 0;
+    color: var(--cor-principal);
+    border-bottom: 2px solid var(--cor-principal);
+    padding-bottom: var(--espaco-pequeno);
+}
+
+/* ============================================
+   FORMULÁRIO - MOBILE FIRST
+   ============================================ */
+
+/* POR QUE: formulário em coluna (mobile). Cada elemento fica em linha nova. */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+}
+
+/* POR QUE: fieldset agrupa dados logicamente e tem borda visual. Melhor que div. */
+.grupo-dados {
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    padding: var(--espaco-medio);
+    margin: 0;
+}
+
+/* POR QUE: legend nomeia o fieldset. Aparece no topo da borda. */
+.grupo-dados legend {
+    color: var(--cor-principal);
+    font-weight: bold;
+    padding: 0 var(--espaco-pequeno);
+}
+
+/* POR QUE: cada grupo de label+input tem gap para respirar verticalmente. */
+.grupo-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-pequeno);
+    margin-bottom: var(--espaco-pequeno);
+}
+
+.grupo-form label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* POR QUE: inputs, selects e textarea herdam width 100% e padding para better UX. */
+.grupo-form input,
+.grupo-form select,
+.grupo-form textarea {
+    padding: var(--espaco-pequeno);
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+/* POR QUE: :focus mostra visualmente que o campo está ativo. Shadow sutil ajuda. */
+.grupo-form input:focus,
+.grupo-form select:focus,
+.grupo-form textarea:focus {
+    outline: none;
+    border-color: var(--cor-principal);
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+}
+
+/* ============================================
+   CONTAINER DINÂMICO (experiências e formações)
+   ============================================ */
+
+/* POR QUE: container flexível para campos que são adicionados dinamicamente. */
+.container-dinamico {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+    margin-bottom: var(--espaco-medio);
+}
+
+/* POR QUE: cada bloco de experiência/formação é um div com bordinha sutil. */
+.bloco-dinamico {
+    background-color: var(--cor-fundo-claro);
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    padding: var(--espaco-medio);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-pequeno);
+}
+
+/* POR QUE: campos dentro do bloco dinâmico herdam espaço. */
+.bloco-dinamico .grupo-form {
+    margin-bottom: 0;
+}
+
+/* POR QUE: botão remover fica à direita dentro do bloco dinâmico. */
+.botao-remover-campo {
+    background-color: var(--cor-perigo);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+
+.botao-remover-campo:hover {
+    background-color: #c82333;
+}
+
+/* ============================================
+   BOTÕES
+   ============================================ */
+
+/* POR QUE: botão secundário (adicionar experiência/formação) tem cor discreta. */
+.botao-secundario {
+    background-color: #6c757d;
+    color: white;
+    padding: var(--espaco-media);
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-secundario:hover {
+    background-color: #5a6268;
+}
+
+/* POR QUE: botão principal (enviar) tem cor de sucesso e destaque. */
+.botao-principal {
+    background-color: var(--cor-sucesso);
+    color: white;
+    padding: var(--espaco-media);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-principal:hover {
+    background-color: #218838;
+}
+
+/* ============================================
+   LISTA DE CURRÍCULOS
+   ============================================ */
+
+/* POR QUE: lista sem bullets padrão. Renderização dinâmica cria os itens. */
+.lista-curriculos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-media);
+}
+
+/* POR QUE: cada currículo é um cartão com borda esquerda colorida. */
+.item-curriculo {
+    background-color: white;
+    border: 1px solid var(--cor-borda);
+    border-left: 4px solid var(--cor-principal);
+    border-radius: 4px;
+    padding: var(--espaco-media);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-pequeno);
+}
+
+/* POR QUE: informações principais em destaque com strong e cor. */
+.item-curriculo strong {
+    color: var(--cor-principal);
+}
+
+/* POR QUE: seção dentro do currículo tem espaçamento e borda sutil. */
+.secao-curriculo {
+    padding: var(--espaco-pequeno) 0;
+    border-top: 1px solid var(--cor-borda);
+}
+
+.secao-curriculo:first-child {
+    border-top: none;
+}
+
+.secao-curriculo h4 {
+    margin: var(--espaco-pequeno) 0 var(--espaco-pequeno) 0;
+    color: var(--cor-principal);
+    font-size: 14px;
+}
+
+/* POR QUE: subseção lista as experiências ou formações. */
+.subsecao {
+    margin-left: var(--espaco-media);
+    padding: var(--espaco-pequeno) 0;
+    font-size: 13px;
+}
+
+.subsecao-item {
+    margin-bottom: var(--espaco-pequeno);
+    padding: var(--espaco-pequeno);
+    background-color: var(--cor-fundo-claro);
+    border-radius: 4px;
+}
+
+/* POR QUE: botão remover currículo é destacado e fica à direita. */
+.botao-remover-curriculo {
+    background-color: var(--cor-perigo);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    align-self: flex-end;
+    transition: background-color 0.3s;
+}
+
+.botao-remover-curriculo:hover {
+    background-color: #c82333;
+}
+
+/* ============================================
+   RESPONSIVO - MOBILE FIRST
+   ============================================ */
+
+/* POR QUE: só acima de 768px o layout muda. Mobile-first: começa simples, melhora em telas grandes. */
+@media (min-width: 768px) {
+    /* POR QUE: em desktop, formulário e lista ficam lado a lado. */
+    .conteudo-principal {
+        flex-direction: row;
+    }
+
+    /* POR QUE: ambos ocupam espaço igual. */
+    .secao-formulario,
+    .secao-lista {
+        flex: 1;
+    }
+
+    /* POR QUE: cabeçalho ainda maior em telas desktop. */
+    .cabecalho h1 {
+        font-size: 40px;
+    }
+
+    /* POR QUE: campos ganham mais padding para melhor experiência em mouse. */
+    .grupo-form input,
+    .grupo-form select,
+    .grupo-form textarea {
+        padding: 12px;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Currículo - Portal de Vagas</title>
+    <!-- POR QUE: link em <head> conecta o CSS externo antes de renderizar o HTML. -->
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- POR QUE: header semântico identifica o site. Comunica o propósito da página. -->
+    <header class="cabecalho">
+        <h1>Portal de Vagas</h1>
+        <p>Cadastre seu currículo e encontre a oportunidade perfeita</p>
+    </header>
+
+    <main class="conteudo-principal">
+        <!-- POR QUE: section agrupa o formulário completo. Permite reorganizar com flexbox depois. -->
+        <section class="secao-formulario">
+            <h2>Meu Currículo</h2>
+            
+            <!-- POR QUE: form porque coleta dados que serão processados por JavaScript. -->
+            <form id="formulario-curriculo" class="formulario">
+                
+                <!-- ========== SEÇÃO 1: DADOS PESSOAIS ========== -->
+                <!-- POR QUE: fieldset agrupa logicamente os dados pessoais. <legend> nomeia o grupo. -->
+                <fieldset class="grupo-dados">
+                    <legend>Dados Pessoais</legend>
+
+                    <div class="grupo-form">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="nivel-experiencia">Nível de Experiência</label>
+                        <!-- POR QUE: select porque há opções exclusivas que o candidato escolhe uma. -->
+                        <select id="nivel-experiencia" name="nivel-experiencia" required>
+                            <option value="">-- Selecione --</option>
+                            <option value="junior">Júnior (0-2 anos)</option>
+                            <option value="pleno">Pleno (2-5 anos)</option>
+                            <option value="senior">Sênior (5+ anos)</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- ========== SEÇÃO 2: EXPERIÊNCIA PROFISSIONAL ========== -->
+                <!-- POR QUE: fieldset agrupa experiências. Permite adicionar múltiplas. -->
+                <fieldset class="grupo-dados">
+                    <legend>Experiência Profissional</legend>
+                    
+                    <!-- POR QUE: container para adicionar dinamicamente novos campos de experiência. -->
+                    <div id="container-experiencias" class="container-dinamico">
+                        <!-- Os campos de experiência são criados aqui pelo JavaScript -->
+                    </div>
+
+                    <!-- POR QUE: botão adiciona novo campo de experiência sem submeter o formulário. -->
+                    <button type="button" id="botao-adicionar-experiencia" class="botao-secundario">
+                        + Adicionar Experiência
+                    </button>
+                </fieldset>
+
+                <!-- ========== SEÇÃO 3: FORMAÇÃO ACADÊMICA ========== -->
+                <!-- POR QUE: fieldset agrupa formações. Permite adicionar múltiplas. -->
+                <fieldset class="grupo-dados">
+                    <legend>Formação Acadêmica</legend>
+                    
+                    <!-- POR QUE: container para adicionar dinamicamente novos campos de formação. -->
+                    <div id="container-formacoes" class="container-dinamico">
+                        <!-- Os campos de formação são criados aqui pelo JavaScript -->
+                    </div>
+
+                    <!-- POR QUE: botão adiciona novo campo de formação sem submeter o formulário. -->
+                    <button type="button" id="botao-adicionar-formacao" class="botao-secundario">
+                        + Adicionar Formação
+                    </button>
+                </fieldset>
+
+                <!-- POR QUE: botão principal. type="button" porque JavaScript controla a lógica, não é submit. -->
+                <button type="button" id="botao-enviar" class="botao-principal">
+                    Enviar Cadastro
+                </button>
+            </form>
+        </section>
+
+        <!-- POR QUE: section separada para a lista. Permite posicionar lado a lado em telas grandes (flexbox). -->
+        <section class="secao-lista">
+            <h2>Currículos Cadastrados</h2>
+            <!-- POR QUE: ul porque é uma lista semântica. Será renderizada completamente pelo JavaScript. -->
+            <ul id="lista-curriculos" class="lista-curriculos">
+                <!-- Os currículos aparecem aqui quando desenharListaCurriculos() é chamado -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- POR QUE: script no fim do <body>. Garante que o HTML foi carregado antes do JS procurar pelos elementos. -->
+    <script src="javaScript.js"></script>
+</body>
+</html>
