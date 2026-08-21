@@ -1,0 +1,10 @@
+{
+  "description": "This mobile-first gas delivery system app features an intuitive interface designed for easy one-handed use, ensuring quick and efficient order placement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
