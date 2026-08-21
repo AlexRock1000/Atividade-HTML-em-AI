@@ -471,7 +471,7 @@ function loadScreens() {
       return;
     }
 
-    let path = parts[idx];
+    let path = "index/" + parts[idx];
     fetch(path).then(function(resp) {
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       return resp.text();
