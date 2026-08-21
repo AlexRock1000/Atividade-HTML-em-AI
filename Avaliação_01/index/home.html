@@ -1,0 +1,54 @@
+<!-- home.html: fragmento da TELA HOME -->
+<div id="homeScreen" class="screen active">
+  <div class="status-bar">
+    <span id="clockHome" class="time">12:00</span>
+    <div class="status-info">
+      <span class="status-online">● ONLINE</span>
+      <span class="status-icons">📶 🔋</span>
+    </div>
+  </div>
+
+  <div class="top-info">
+    <div class="card-dark">
+      <div class="label">ENTREGADOR</div>
+      <div class="title-large">Éder Silva</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="label">HOJE</div>
+          <div id="entregas-count" class="stat-value gold">7</div>
+          <div class="label-small">entregas</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">GANHOS</div>
+          <div id="ganhos-value" class="stat-value green">R$ 126,00</div>
+          <div class="label-small">comissão</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-dark next-delivery">
+      <div class="label">PRÓXIMA ENTREGA</div>
+      <div class="delivery-info">
+        <div class="delivery-icon">🏠</div>
+        <div>
+          <div class="delivery-address">Rua das Flores, 247 — Ap. 32</div>
+          <div class="delivery-distance">1,2 km • ~8 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="thumb-zone">
+    <button id="btnRegistrarEntrega" class="btn-primary btn-large">
+      <span class="btn-icon">🛵</span>
+      REGISTRAR ENTREGA
+    </button>
+    <!-- Botão que abre o histórico das entregas do dia -->
+    <button id="btnHistorico" class="btn-secondary btn-medium">
+      <span class="btn-icon">📋</span>
+      HISTÓRICO DO DIA
+    </button>
+  </div>
+</div>

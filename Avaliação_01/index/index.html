@@ -4,9 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tela Inicial Entrega de Gás</title>
+    <!-- Estilos da interface: variáveis CSS para temas e layout responsivo -->
+    <link rel="stylesheet" href="estilo.css">
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Estrutura simulando um 'phone frame' para demonstrar UI mobile -->
+    <div class="phone-frame">
+      <!-- Notch do dispositivo (apenas visual) -->
+      <div class="notch"></div>
+
+      <!-- Conteúdo principal: as telas agora são carregadas a partir de arquivos separados (home.html, produto.html, pagamento.html, comprovante.html). O JS faz fetch e injeta os fragmentos aqui. -->
+      <div class="screen-content" id="screenContent">
+        <!-- conteúdo será injetado dinamicamente -->
+      </div>
+
+      <!-- Home indicator (visual) -->
+      <div class="home-indicator"></div>
+    </div>
+
+    <!-- Script principal: lógica da aplicação em Vanilla JS -->
+    <!-- Comentários detalhados no próprio arquivo JS explicam cada função -->
+    <script src="script.js"></script>
   </body>
 </html>

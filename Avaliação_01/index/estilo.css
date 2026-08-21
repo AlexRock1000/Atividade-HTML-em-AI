@@ -1,4 +1,10 @@
-/* RESET E VARIÁVEIS */
+/*
+  RESET E VARIÁVEIS
+  - Reset básico para garantir consistência entre navegadores.
+  - Variáveis CSS (`:root`) permitem ajustar cores, espaçamentos e
+    bordas em um só lugar; facilita mudanças de tema sem tocar em várias
+    regras.
+*/
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +12,7 @@
 }
 
 :root {
+  /* Paleta escura e tokens reutilizáveis para layout */
   --bg-dark: #121212;
   --bg-darker: #0a0a0a;
   --bg-card: #1e1e1e;
@@ -283,6 +290,7 @@ button:active {
   height: 72px;
   background: var(--bg-card);
   color: var(--color-gray);
+  /* usa token `--border-color` com fallback para compatibilidade */
   border: 2px solid var(--border-color);
   font-size: 16px;
   gap: 10px;
@@ -540,6 +548,44 @@ button:active {
   font-weight: 900;
   color: var(--color-gold);
 }
+
+/* Estilos para modal de histórico */
+.historico-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.historico-card {
+  width: 92%;
+  max-width: 560px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+}
+.historico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: 8px;
+}
+.historico-close {
+  background: none;
+  color: var(--color-gold);
+  border: none;
+  font-weight: 800;
+}
+.historico-body { max-height: 60vh; overflow-y: auto; }
+.historico-row { display:flex; justify-content:space-between; padding:8px 6px; border-bottom:1px dashed var(--border-color); color:var(--color-white); }
+.hist-prod { flex:1; font-weight:700 }
+.hist-preco { width:120px; text-align:right; font-weight:900; color:var(--color-gold) }
+.hist-meta { width:140px; text-align:right; color:var(--color-gray); font-size:13px }
 
 /* RESPONSIVE AJUSTAMENTOS */
 @media (max-width: 480px) {
