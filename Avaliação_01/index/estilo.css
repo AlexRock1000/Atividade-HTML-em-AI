@@ -20,7 +20,7 @@
   --color-gold: #FFD700;
   --color-green: #39FF14;
   --color-white: #ffffff;
-  --color-gray: #888888;
+  --color-gray: #d1d0d0;
   --color-gray-light: #555555;
   --color-border: #333333;
   --border-radius: 24px;
@@ -489,21 +489,26 @@ button:active {
 }
 
 .comprovante-card {
-  border: 1px solid var(--border-color);
+  background: #f5f5f5;
+  border: 1px solid #ddd;
   padding: 20px 24px;
   flex-shrink: 0;
 }
 
+.comprovante-card .label {
+  color: #000;
+}
+
 .comprovante-header {
   text-align: center;
-  border-bottom: 1px dashed var(--border-color);
+  border-bottom: 1px dashed #ddd;
   padding-bottom: 16px;
   margin-bottom: 16px;
 }
 
 .comprovante-empresa {
   font-size: 13px;
-  color: var(--color-gray-light);
+  color: #1d1d1d;
   margin-top: 4px;
 }
 
@@ -520,14 +525,14 @@ button:active {
 
 .comprovante-label {
   font-size: 13px;
-  color: var(--color-gray);
+  color: #1d1c1c;
   font-weight: 600;
 }
 
 .comprovante-value {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-white);
+  color: #000;
 }
 
 .comprovante-value.mono {
