@@ -6,25 +6,7 @@ import TelaComprovante from './componentes/TelaComprovante';
 import TelaHistorico from './componentes/TelaHistorico';
 import produtos from './dados/produtos';
 
-type Screen = 'home' | 'produto' | 'pagamento' | 'comprovante' | 'historico';
-type Produto = {
-  id: number;
-  nome: string;
-  preco: number;
-  icone: string;
-  descricao: string;
-  disponivel: boolean;
-};
-type FormaPag = 'PIX' | 'Dinheiro' | 'Cartão';
-type RegistroHistorico = {
-  produto: string;
-  preco: string;
-  formaPagamento: FormaPag | string;
-  hora: string;
-  codigo: string;
-};
-
-function formatarBRL(valor: number) {
+function formatarBRL(valor) {
   return valor.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -47,21 +29,21 @@ function gerarCodigo() {
 }
 
 export default function App() {
-  const [telaAtual, setTelaAtual] = useState<Screen>('home');
-  const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
-  const [formaPagamento, setFormaPagamento] = useState<FormaPag | null>(null);
-  const [codigo, setCodigo] = useState<string>(gerarCodigo);
-  const [hora, setHora] = useState<string>(formatarHora);
-  const [data] = useState<string>(formatarData);
-  const [entregasHoje, setEntregasHoje] = useState<number>(7);
-  const [historico, setHistorico] = useState<RegistroHistorico[]>([]);
+  const [telaAtual, setTelaAtual] = useState('home');
+  const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+  const [formaPagamento, setFormaPagamento] = useState(null);
+  const [codigo, setCodigo] = useState(gerarCodigo);
+  const [hora, setHora] = useState(formatarHora);
+  const [data] = useState(formatarData);
+  const [entregasHoje, setEntregasHoje] = useState(7);
+  const [historico, setHistorico] = useState([]);
 
-  function selecionarProduto(produto: Produto) {
+  function selecionarProduto(produto) {
     setProdutoSelecionado(produto);
     setTelaAtual('pagamento');
   }
 
-  function confirmarPagamento(forma: FormaPag) {
+  function confirmarPagamento(forma) {
     if (!produtoSelecionado) {
       return;
     }
