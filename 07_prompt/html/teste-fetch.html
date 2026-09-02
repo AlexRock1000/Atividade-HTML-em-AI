@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste Fetch - dados.json</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; }
+    h2 { color: #0066cc; margin-top: 20px; }
+    .produto, .pedido {
+      border-left: 4px solid #0066cc;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #f9f9f9;
+    }
+    .error {
+      background-color: #ffebee;
+      color: #c62828;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+    .success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+    button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0052a3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 Teste de Fetch - dados.json</h1>
+    <p>Clique no botão abaixo para testar o carregamento do arquivo JSON:</p>
+    
+    <button onclick="testarFetch()">Carregar dados.json</button>
+    
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function testarFetch() {
+      const resultado = document.getElementById('resultado');
+      resultado.innerHTML = '<p style="color: #666;">Carregando...</p>';
+
+      fetch('./dados.json')
+        .then(function(resposta) {
+          if (!resposta.ok) {
+            throw new Error('HTTP ' + resposta.status + ' - ' + resposta.statusText);
+          }
+          return resposta.json();
+        })
+        .then(function(dados) {
+          // Sucesso!
+          let html = '<div class="success">✓ Arquivo carregado com sucesso!</div>';
+          
+          // Exibir produtos
+          html += '<h2>📦 Produtos (' + dados.produtos.length + ')</h2>';
+          dados.produtos.forEach(function(prod) {
+            html += `
+              <div class="produto">
+                <strong>${prod.nome}</strong> (ID: ${prod.id})<br>
+                Descrição: ${prod.descricao}<br>
+                Preço: R$ ${prod.preco.toFixed(2)}<br>
+                Disponível: ${prod.disponivel ? '✓ Sim' : '✗ Não'}
+              </div>
+            `;
+          });
+
+          // Exibir pedidos
+          html += '<h2>📋 Pedidos (' + dados.pedidos.length + ')</h2>';
+          dados.pedidos.forEach(function(ped) {
+            html += `
+              <div class="pedido">
+                <strong>Pedido #${ped.id}</strong> - ${ped.cliente}<br>
+                Data: ${ped.data} | Status: ${ped.status}<br>
+                Produtos: ${ped.produtos.join(', ')} | Total: R$ ${ped.total.toFixed(2)}
+              </div>
+            `;
+          });
+
+          resultado.innerHTML = html;
+        })
+        .catch(function(erro) {
+          // Erro ao carregar
+          resultado.innerHTML = `
+            <div class="error">
+              <strong>✗ Erro ao carregar dados.json:</strong><br>
+              ${erro.message}<br><br>
+              <small>Verifique se o arquivo existe na mesma pasta que este HTML.</small>
+            </div>
+          `;
+          console.error('Erro completo:', erro);
+        });
+    }
+
+    // Teste automático ao carregar a página
+    window.addEventListener('load', function() {
+      console.log('Página carregada. Você pode clicar no botão para testar o fetch.');
+    });
+  </script>
+</body>
+</html>
